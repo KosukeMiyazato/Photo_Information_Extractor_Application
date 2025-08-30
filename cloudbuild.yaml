@@ -1,0 +1,11 @@
+steps:
+  # Docker イメージをビルド
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-nextjs-app', '.']
+
+  # Docker イメージを Google Container Registry にプッシュ
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/my-nextjs-app']
+
+images:
+  - 'gcr.io/$PROJECT_ID/my-nextjs-app'
