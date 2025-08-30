@@ -2,6 +2,9 @@
 const nextConfig = {
   output: 'export',
   optimizeFonts: false,
+  env: {
+    NEXT_FONT_GOOGLE_OPTIMIZED: 'false',
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
