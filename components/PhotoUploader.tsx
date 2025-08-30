@@ -103,7 +103,6 @@ export function PhotoUploader() {
       // Extract field information from text
       const extractedData: Record<string, string> = {};
       fields.forEach(field => {
-        // Simple text matching - in production, you'd use more sophisticated NLP
         const pattern = new RegExp(`${field.name}[：:]?\\s*([^\\n\\r]+)`, 'i');
         const match = extractedText.match(pattern);
         extractedData[field.name] = match?.[1]?.trim() || '';
@@ -128,7 +127,6 @@ export function PhotoUploader() {
         success: true,
       }));
 
-      // Reset after success
       setTimeout(() => {
         setUploadState({
           file: null,
@@ -217,7 +215,7 @@ export function PhotoUploader() {
                 </span>
                 <span>{uploadState.progress}%</span>
               </div>
-              <Progress value={uploadState.progress} className="w-full" />
+              <Progress value={Math.min(Math.max(uploadState.progress, 0), 100)} className="w-full" />
             </div>
           )}
 
