@@ -1,10 +1,5 @@
 # Google Cloud Build configuration for Next.js application
 steps:
-  # Step 0: Debug - List files in workspace
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'sh'
-    args: ['-c', 'ls -la /workspace && echo "=== Dockerfile content ===" && cat /workspace/Dockerfile']
-
   # Step 1: Build the Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '--no-cache', '--progress=plain', '-t', 'gcr.io/$PROJECT_ID/photo-info-extractor:$COMMIT_SHA', '-t', 'gcr.io/$PROJECT_ID/photo-info-extractor:latest', '.']
